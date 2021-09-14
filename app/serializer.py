@@ -45,3 +45,7 @@ class DebitSerializer(serializers.ModelSerializer):
     class Meta:
         model = Debit
         fields = '__all__'
+class QuickPanelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = QuickPanel
+        fields = '__all__'
