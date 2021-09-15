@@ -17,6 +17,13 @@ class ProductView(viewsets.ModelViewSet):
 class ProductByCategoryView(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+class ProductByStatusView(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    def retrieve(self, request, *args, **kwargs):
+        status = self.queryset.filter(status=kwargs['status'])
+        serializer = self.get_serializer(status,many=True)
+        return Response(serializer.data)
 class StockView(viewsets.ModelViewSet):
     queryset = Stock.objects.all()
     serializer_class = StockSerializer

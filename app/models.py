@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 class Category(models.Model):
     name = models.CharField(max_length=200)
-    image = models.ImageField(null=True)
+    image = models.ImageField(null=True,blank=True)
     description = models.TextField(null=True)
     def __str__(self):
         return self.name
@@ -27,6 +27,7 @@ class Product(models.Model):
     discount = models.FloatField(default=0)
     description = models.TextField(null=True)
     shtrix = models.CharField(max_length=100)
+    status = models.CharField(max_length=50,null=True,unique=True)
     def __str__(self):
         return self.name
 class Stock(models.Model):
@@ -58,6 +59,8 @@ class Debit(models.Model):
 class Seller(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     required_name = models.CharField(max_length=50)
+    def __str__(self):
+        return self.required_name
 class Sale(models.Model):
     seller = models.ForeignKey(Seller,on_delete=models.SET_NULL,null=True)
     sale_date = models.DateTimeField(auto_now_add=True)
@@ -69,6 +72,7 @@ class Sale(models.Model):
         for s in sp:
             res.append(s.summa)
         return sum(res)
+
 class SaleProduct(models.Model):
     sale = models.ForeignKey(Sale,on_delete=models.CASCADE)
     product = models.ForeignKey(Product,on_delete=models.SET_NULL,null=True)
