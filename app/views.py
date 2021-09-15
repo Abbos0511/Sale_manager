@@ -32,6 +32,12 @@ class SupplierView(viewsets.ModelViewSet):
 class DebitView(viewsets.ModelViewSet):
     queryset = Debit.objects.all()
     serializer_class = DebitSerializer
-class QuickPanelView(viewsets.ModelViewSet):
-    queryset = Product.objects.all()
-    serializer_class = QuickPanelSerializer
+class SellerView(viewsets.ModelViewSet):
+    queryset = Seller.objects.all()
+    serializer_class = SellerSerializer
+class SaleView(viewsets.ModelViewSet):
+    queryset = Sale.objects.all()
+    serializer_class = SaleSerializer
+class SaleProductView(viewsets.ModelViewSet):
+    queryset = SaleProduct.objects.all()
+    serializer_class = SaleProductSerializer

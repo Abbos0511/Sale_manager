@@ -81,8 +81,3 @@ class SaleProduct(models.Model):
     def summa(self):
         return self.product.price*self.quantity
 
-class QuickPanel(models.Model):
-    product = models.OneToOneField(Product,on_delete=models.SET_NULL,null=True)
-    # def __str__(self):
-    #     return self.product.name
-

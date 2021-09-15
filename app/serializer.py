@@ -33,7 +33,15 @@ class DebitSerializer(serializers.ModelSerializer):
     class Meta:
         model = Debit
         fields = '__all__'
-class QuickPanelSerializer(serializers.ModelSerializer):
+class SellerSerializer(serializers.ModelSerializer):
     class Meta:
-        model = QuickPanel
+        model = Seller
+        fields = '__all__'
+class SaleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Sale
+        fields = '__all__'
+class SaleProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SaleProduct
         fields = '__all__'
