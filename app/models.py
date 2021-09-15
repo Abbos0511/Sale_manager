@@ -61,7 +61,6 @@ class Seller(models.Model):
 class Sale(models.Model):
     seller = models.ForeignKey(Seller,on_delete=models.SET_NULL,null=True)
     sale_date = models.DateTimeField(auto_now_add=True)
-    shtrix_code = models.ForeignKey(Product,on_delete=models.SET_NULL,null=True)
     @property
     def total_summ(self):
         sp = SaleProduct.objects.filter(sale=self)
@@ -84,6 +83,6 @@ class SaleProduct(models.Model):
 
 class QuickPanel(models.Model):
     product = models.OneToOneField(Product,on_delete=models.SET_NULL,null=True)
-    def __str__(self):
-        return self.product.name
+    # def __str__(self):
+    #     return self.product.name
 
